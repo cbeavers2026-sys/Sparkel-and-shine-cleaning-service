@@ -1,3 +1,106 @@
+*  {logo <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squeaky Clean Dustbusters Logo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #111; /* Dark background to showcase the isolated logo */
+            font-family: 'Georgia', serif;
+        }
+
+        .logo-container {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.7));
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Gold Gradient and Text Styling */
+        .gold-text {
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .sub-text {
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logo-container">
+        <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="goldGrad
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squeaky Clean Dustbusters Logo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #111; /* Dark background to showcase the isolated logo */
+            font-family: 'Georgia', serif;
+        }
+
+        .logo-container {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.7));
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Gold Gradient and Text Styling */
+        .gold-text {
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .sub-text {
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logo-container">
+        <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="goldGrad
+
 * {
     margin: 0;
     padding: 0;
