@@ -36,45 +36,139 @@ body {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 1;
-}
+    z-index: 1;<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Colored Bubbles</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #050505; /* Deep black background */
+        }
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
 
-.bubble {
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: auto;
-    cursor: pointer;
-    animation: float-bubble 8s infinite ease-in-out;
-}
+    <canvas id="bubbleCanvas"></canvas>
 
-.bubble::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), transparent);
-    border-radius: 50%;
-}
+    <script>
+        const canvas = document.getElementById('bubbleCanvas');
+        const ctx = canvas.getContext('2d');
 
-@keyframes float-bubble {
-    0% {
-        transform: translateY(0) translateX(0);
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.7;
-    }
-    100% {
-        transform: translateY(-100vh) translateX(50px);
-        opacity: 0;
-    }
-}
+        // Resize canvas to fit the screen
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
 
-.bubble-pop {
-    animation: pop-animation 0.6s ease-out forwards !important;
-}
+        // Bubble color palette matching the GIF
+        const colors = [
+            { r: 74,  g: 144, b: 226 }, // Ice Blue
+            { r: 217, g: 83,  b: 79  }, // Soft Red/Coral
+            { r: 240, g: 173, b: 78  }, // Amber/Yellow
+            { r: 92,  g: 184, b: 92  }  // Emerald Green
+        ];
+
+        class Bubble {
+            constructor() {
+                this.reset();
+                // Randomize initial Y position so they don't all start at the bottom at once
+                this.y = Math.random() * canvas.height;
+            }
+
+            reset() {
+                this.radius = Math.random() * 40 + 20; // Size between 20px and 60px
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + this.radius + Math.random() * 100; // Start just below screen
+                this.speedY = Math.random() * 1.5 + 0.5; // Upward speed
+                this.speedX = Math.random() * 0.6 - 0.3; // Slight side-to-side sway
+                this.baseOpacity = Math.random() * 0.4 + 0.3; // Transparency
+                this.opacity = this.baseOpacity;
+                
+                // Pick a random color from our palette
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Sway frequency
+                this.wobbleSpeed = Math.random() * 0.02;
+                this.wobbleCount = Math.random() * 100;
+            }
+
+            update() {
+                this.y -= this.speedY;
+                this.wobbleCount += this.wobbleSpeed;
+                this.x += this.speedX + Math.sin(this.wobbleCount) * 0.5; // Natural drifting wave
+
+                // Gradually fade out near the top of the screen
+                if (this.y < canvas.height * 0.3) {
+                    this.opacity = (this.y / (canvas.height * 0.3)) * this.baseOpacity;
+                }
+
+                // Reset bubble if it goes completely off screen or fades out
+                if (this.y + this.radius < 0 || this.opacity <= 0.01) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                
+                // Create a radial gradient to mimic the bubble's 3D/reflective look
+                // Inner highlight offset to the top-left
+                let gradient = ctx.createRadialGradient(
+                    this.x - this.radius * 0.3, this.y - this.radius * 0.3, this.radius * 0.1,
+                    this.x, this.y, this.radius
+                );
+                
+                // Mimic the rim lighting and hollow center of a soap bubble
+                gradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity * 0.9})`); // Bright specular highlight
+                gradient.addColorStop(0.2, `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, ${this.opacity * 0.6})`);
+                gradient.addColorStop(0.8, `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, ${this.opacity * 0.1})`); // Hollow center
+                gradient.addColorStop(1, `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, ${this.opacity * 0.7})`); // Sharp rim
+
+                ctx.fillStyle = gradient;
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.closePath();
+            }
+        }
+
+        // Initialize bubble array
+        const bubbleCount = 15;
+        const bubbles = [];
+        for (let i = 0; i < bubbleCount; i++) {
+            bubbles.push(new Bubble());
+        }
+
+        // Animation every 5 minutes 
+        function animate() {
+            // Clear the canvas with a slight trail effect
+            ctx.fillStyle = 'rgba(5, 5, 5, 0.3)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Update and draw each bubble
+            bubbles.forEach(bubble => {
+                bubble.update();
+                bubble.draw();
+            });
+
+            requestAnimationFrame(animate);
+        
 
 @keyframes pop-animation {
     0% {
@@ -90,7 +184,7 @@ body {
 /* Navigation */
 .navbar {
     background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-    color: var(--white);
+    color: var(--light blue);
     padding: 1.5rem 0;
     position: sticky;
     top: 0;
@@ -107,7 +201,58 @@ body {
 .logo-text {
     font-size: 1.8rem;
     font-weight: bold;
-    color: var(--gold);
+    color: var(--yellow);(--gold);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squeaky Clean Dustbusters Logo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #111; /* Dark background to showcase the isolated logo */
+            font-family: 'Georgia', serif;
+        }
+
+        .logo-container {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.7));
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Gold Gradient and Text Styling */
+        .gold-text {
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .sub-text {
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logo-container">
+        <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="goldGrad
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -118,8 +263,8 @@ body {
 }
 
 .nav-links a {
-    color: var(--white);
-    text-decoration: none;
+    color: var(--light blue);
+    text-decoration: hand writing;
     transition: all 0.3s ease;
     font-weight: bold;
     position: relative;
@@ -172,43 +317,7 @@ body {
     text-align: center;
 }
 
-.frame-ornament {
-    width: 100%;
-    height: 400px;
-    border: 8px solid var(--gold);
-    border-radius: 20px;
-    background: rgba(0, 26, 77, 0.9);
-    position: relative;
-    box-shadow: 0 0 40px rgba(255, 215, 0, 0.5), inset 0 0 30px rgba(138, 43, 226, 0.2);
-}
 
-.duck-logo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 120px;
-    z-index: 3;
-    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
-}
-
-.flag-background {
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    width: 150px;
-    height: 100px;
-    background: repeating-linear-gradient(
-        90deg,
-        #b22234 0px,
-        #b22234 30px,
-        white 30px,
-        white 60px
-    );
-    border-radius: 5px;
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
-    z-index: 2;
 }
 
 .frame-text {
