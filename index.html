@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sparkle and Shine Cleaning Service</title>
+    <title>Squeaky Clean Dusters - Sparkle and Shine Cleaning Service</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,157 +13,90 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="logo">✨ Sparkle and Shine</div>
+            <div class="logo-text">🦆 SQUEAKY CLEAN DUSTERS</div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Squeaky Clean Dusters</h1>
-            <p>Clean & Shine • Sparkley Every Time!</p>
-            <p class="subtitle">Professional Cleaning Services for Your Home, Office & Building</p>
-            <a href="#contact" class="cta-button">Book Now</a>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2>Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>🏠 Houses</h3>
-                    <p>Complete residential cleaning solutions tailored to your home's needs.</p>
-                </div>
-                <div class="service-card">
-                    <h3>🏢 Offices</h3>
-                    <p>Professional office cleaning to keep your workspace fresh and productive.</p>
-                </div>
-                <div class="service-card">
-                    <h3>🏗️ Buildings</h3>
-                    <p>Comprehensive post-construction and commercial building cleaning.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing">
-        <div class="container">
-            <h2>Pricing</h2>
-            <div class="pricing-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Service Type</th>
-                            <th>Standard Cleaning</th>
-                            <th>Deep Cleaning</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Houses</strong></td>
-                            <td>$300.00</td>
-                            <td>$500.00</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Offices</strong></td>
-                            <td>$600.00</td>
-                            <td>$900.00</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Buildings</strong></td>
-                            <td>$1,200.00</td>
-                            <td>$1,800.00</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery">
-        <div class="container">
-            <h2>Our Work</h2>
-            <p class="gallery-subtitle">Check out some of our recent cleaning projects</p>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">🧹 Before & After</div>
-                    <p>Residential Cleaning</p>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">✨ Deep Clean</div>
-                    <p>Office Space</p>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">🏗️ Post Construction</div>
-                    <p>Building Cleanup</p>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">💎 Premium Service</div>
-                    <p>Commercial Property</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact & Booking Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Contact Us Today!</h2>
-            <p class="contact-tagline">Let us handle the cleaning, so you can focus on what matters.</p>
-            
-            <div class="contact-wrapper">
-                <div class="contact-info">
-                    <div class="info-item">
-                        <span class="icon">👤</span>
-                        <p><strong>Contact Name:</strong><br>Megan Hitt</p>
+    <!-- Home Page -->
+    <div class="page" id="home">
+        <!-- Hero Section with Logo -->
+        <section class="hero">
+            <div class="hero-content">
+                <!-- Logo Frame -->
+                <div class="logo-frame">
+                    <div class="frame-ornament"></div>
+                    <div class="duck-logo">
+                        🦆
                     </div>
-                    <div class="info-item">
-                        <span class="icon">📧</span>
-                        <p><strong>Email:</strong><br><a href="mailto:sparkle3shinecleaningservices@gmail.com">sparkle3shinecleaningservices@gmail.com</a></p>
+                    <div class="flag-background">
+                        <div class="usa-flag"></div>
                     </div>
-                    <div class="info-item">
-                        <span class="icon">📱</span>
-                        <p><strong>Phone:</strong><br><a href="tel:304-952-1115">304-952-1115</a></p>
+                    <div class="frame-text">
+                        <div class="frame-top">SPARKLE AND SHINE</div>
+                        <div class="frame-middle">CLEANING SERVICE</div>
+                        <div class="frame-bottom">SQUEAKY CLEAN DUSTERS</div>
+                        <div class="frame-tagline">CLEAN & SHINE • SPARKLEY EVERY TIME</div>
                     </div>
                 </div>
-
-                <form class="booking-form">
-                    <h3>Quick Booking</h3>
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <input type="tel" placeholder="Your Phone" required>
-                    <select required>
-                        <option value="">Select Service Type</option>
-                        <option value="house">House Cleaning</option>
-                        <option value="office">Office Cleaning</option>
-                        <option value="building">Building Cleaning</option>
-                    </select>
-                    <select required>
-                        <option value="">Select Cleaning Type</option>
-                        <option value="standard">Standard Cleaning</option>
-                        <option value="deep">Deep Cleaning</option>
-                    </select>
-                    <textarea placeholder="Additional details or questions..." rows="4"></textarea>
-                    <button type="submit" class="submit-button">Book Appointment</button>
-                </form>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Contact Info Section (Like Business Card) -->
+        <section class="contact-hero">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-name">
+                        <h1>MEGAN HITT</h1>
+                        <p class="role">Owner - Sparkle and Shine Cleaning Service</p>
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <div class="contact-info">
+                                <p class="label">PHONE</p>
+                                <a href="tel:304-952-1115">(304) 952-1115</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <div class="contact-info">
+                                <p class="label">EMAIL</p>
+                                <a href="mailto:sparkle3shinecleaningservices@gmail.com">sparkle3shinecleaningservices@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Welcome Section -->
+        <section class="welcome">
+            <div class="container">
+                <h2>Welcome to Sparkle and Shine!</h2>
+                <p class="tagline">Clean & Shine • Sparkley Every Time! ✨</p>
+                <p class="description">
+                    Professional cleaning services for your home, office, and buildings. 
+                    Let us handle the cleaning while you focus on what matters most.
+                </p>
+                <div class="cta-buttons">
+                    <a href="services.html" class="btn btn-primary">Our Services</a>
+                    <a href="contact.html" class="btn btn-secondary">Book Now</a>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2024 Sparkle and Shine Cleaning Service. Clean & Shine • Sparkley Every Time!</p>
+        <p>&copy; 2024 Squeaky Clean Dusters - Sparkle and Shine Cleaning Service</p>
+        <p>Clean & Shine • Sparkley Every Time! 🦆✨</p>
     </footer>
 
     <script src="script.js"></script>
